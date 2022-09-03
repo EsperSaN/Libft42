@@ -6,7 +6,7 @@
 #    By: pruenrua <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/10 20:55:46 by pruenrua          #+#    #+#              #
-#    Updated: 2022/08/31 21:46:03 by pruenrua         ###   ########.fr        #
+#    Updated: 2022/09/03 15:16:20 by pruenrua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,11 @@ OBJ = $(SRC:.c=.o)
 
 CC = gcc
 
-CFLAG = -Wall -Werror -Wextra -std=c99
+CFLAGS = -Wall -Werror -Wextra
 
-%.o: %.c
-	$(CC) $(CFLAG) -c $< -o $@ 
+all : $(NAME)
 
-$(NAME) : all
-
-all : $(OBJ)
+$(NAME) : $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
 clean :
@@ -48,7 +45,5 @@ re : fclean $(NAME)
 
 bonus : $(OBJ) $(B_OBJ)
 	ar -rcs $(NAME) $(OBJ) $(B_OBJ)
-
-test : unit warmac tripulle othelo fclean
 
 .PHONY: clean fclean all re bonus 
